@@ -1,11 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Repo from './Repo.jsx';
 
 class RepoList extends React.Component {
   render() {
     return (
-      <div>RepoList</div>
-    );
+      <div>
+        <ul className="list-group">
+          {
+            this.props.userRepos.map(repo => {
+              return <Repo repo={repo} key={repo.id} {...this.props}/>
+            })
+          }
+        </ul>
+      </div>
+    )
   }
 }
 
