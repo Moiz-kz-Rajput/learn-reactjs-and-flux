@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Profile from './github/Profile.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,10 +12,34 @@ class App extends React.Component {
       perPage: 5
     };
   }
+
+  // Get user data from GitHub
+  getUserData() {
+    $.ajax({
+      url: 'https://api.github.com/users/' + this.state.username + '?client_id=' + this.props.clientId + '&client_secret=' + this.props.clientSecret,
+      dataType: 'json',
+      cache: false,
+      success: ((data) => {
+        this.setState({
+          userData: data
+        });
+        console.log(data);
+      }),
+      error: ((xhr, status, err) => {
+        this.setState({username: null});
+        alert(err);
+      })
+    });
+  }
+
+  componentDidMount() {
+    this.getUserData();
+  }
+
   render() {
     return(
       <div>
-        {this.props.clientId}
+        <Profile userData={this.state.userData} />
       </div>
     );
   }
