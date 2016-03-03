@@ -1,9 +1,16 @@
 import React from 'react';
+import Question from './Question.jsx';
 
 class QuestionList extends React.Component {
   render() {
     return (
-      <div>QuestionList</div>
+      <div className="questions">
+        {
+          this.props.questions.map(question => {
+            return <Question question={question} key={question.id} {...this.props} />
+          })
+        }
+      </div>
     )
   }
 }
