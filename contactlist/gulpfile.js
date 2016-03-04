@@ -2,6 +2,10 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
+var mainBowerFiles = require('gulp-main-bower-files');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var gulpFilter = require('gulp-filter');
 
 gulp.task('browserify', function () {
   browserify('./app/main.js')
@@ -16,10 +20,31 @@ gulp.task('copy', function () {
     .pipe(gulp.dest('dist'));
   gulp.src('app/css/*.*')
     .pipe(gulp.dest('dist/css'));
-  gulp.src('app/vendors/*.*')
-    .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('default', ['browserify', 'copy'], function () {
+gulp.task('bower', function () {
+  var filterJS = gulpFilter('**/*.js', {restore: true});
+
+  return gulp.src('./bower.json')
+    .pipe(mainBowerFiles({
+      overrides: {
+        bootstrap: {
+          main: [
+            './dist/js/bootstrap.js',
+            './dist/css/*.min.*',
+            './dist/fonts/*.*'
+          ]
+        }
+      }
+    }))
+    .pipe(filterJS)
+    .pipe(concat('vendor.js'))
+    .pipe(uglify())
+    .pipe(filterJS.restore)
+    .pipe(gulp.dest('./dist/libs'));
+});
+
+gulp.task('build-all', ['browserify', 'bower', 'copy']);
+gulp.task('default', ['build-all'], function () {
   return gulp.watch('app/**/*.*', ['browserify', 'copy']);
 });
