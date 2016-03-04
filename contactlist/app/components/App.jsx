@@ -1,8 +1,10 @@
 import React from 'react';
 import AppStore from '../stores/AppStore';
+import AddForm from './AddForm.jsx';
 
 function getAppState() {
   return {
+    contacts: AppStore.getContacts()
   };
 }
 
@@ -21,8 +23,11 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.contacts);
     return (
-      <div>App</div>
+      <div>
+        <AddForm />
+      </div>
     )
   }
 

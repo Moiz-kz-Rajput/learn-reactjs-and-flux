@@ -7,10 +7,16 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var gulpFilter = require('gulp-filter');
 
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+}
+
 gulp.task('browserify', function () {
   browserify('./app/main.js')
-    .transform("babelify", {presets: ["es2015", "stage-0", "react"]})
+    .transform(babelify, {presets: ["es2015", "stage-0", "react"]})
     .bundle()
+    .on('error', handleError)
     .pipe(source('main.js'))
     .pipe(gulp.dest('dist/js'));
 });

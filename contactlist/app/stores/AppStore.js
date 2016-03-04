@@ -5,9 +5,17 @@ import someMethod from '../utils/appAPI';
 
 const CHANGE_EVENT = 'change';
 
-let items = [];
+let _contacts = [];
 
 class AppStoreClass extends EventEmitter {
+  saveContact(contact) {
+    _contacts.push(contact);
+  }
+
+  getContacts() {
+    return _contacts;
+  }
+
   emitChange() {
     this.emit(CHANGE_EVENT);
   }
@@ -26,8 +34,14 @@ const AppStore = new AppStoreClass();
 AppDispatcher.register((payload) => {
   const action = payload.action;
 
-  switch (action) {
-    //
+  switch (action.actionType) {
+    case AppConstants.SAVE_CONTACT:
+      console.log('Saving contact...');
+      // Store Save
+      AppStore.saveContact(action.contact);
+      // Emit change
+      AppStore.emit(CHANGE_EVENT);
+      break;
   }
 
   return true;
