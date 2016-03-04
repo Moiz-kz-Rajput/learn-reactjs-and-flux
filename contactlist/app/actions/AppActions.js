@@ -15,6 +15,13 @@ class AppActions {
       contacts: contacts
     });
   }
+
+  static removeContact(contactId) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.REMOVE_CONTACT,
+      contactId: contactId
+    });
+  }
 }
 
 export default AppActions;

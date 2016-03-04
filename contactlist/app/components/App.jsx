@@ -1,6 +1,7 @@
 import React from 'react';
 import AppStore from '../stores/AppStore';
 import AddForm from './AddForm.jsx';
+import ContactList from './ContactList.jsx';
 
 function getAppState() {
   return {
@@ -23,10 +24,10 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.contacts);
     return (
       <div>
         <AddForm />
+        <ContactList contacts={this.state.contacts} />
       </div>
     )
   }

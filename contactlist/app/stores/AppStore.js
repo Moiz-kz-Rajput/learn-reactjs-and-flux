@@ -1,7 +1,7 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
 import {EventEmitter} from 'events';
-import {saveContact} from '../utils/appAPI';
+import {saveContact, removeContact} from '../utils/appAPI';
 
 const CHANGE_EVENT = 'change';
 
@@ -18,6 +18,11 @@ class AppStoreClass extends EventEmitter {
 
   setContacts(contacts) {
     _contacts = contacts;
+  }
+
+  removeContact(contactId) {
+    let index = _contacts.findIndex(x => x.id === contactId);
+    _contacts.splice(index, 1);
   }
 
   emitChange() {
@@ -51,6 +56,14 @@ AppDispatcher.register((payload) => {
     case AppConstants.RECEIVE_CONTACTS:
       console.log('Receiving contacts...');
       AppStore.setContacts(action.contacts);
+      // Emit change
+      AppStore.emit(CHANGE_EVENT);
+      break;
+    case AppConstants.REMOVE_CONTACT:
+      console.log('Removing contact...');
+      AppStore.removeContact(action.contactId);
+      // API remove
+      removeContact(action.contactId);
       // Emit change
       AppStore.emit(CHANGE_EVENT);
       break;

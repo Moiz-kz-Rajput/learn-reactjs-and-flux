@@ -5,6 +5,10 @@ export function saveContact(contact) {
   let firebaseRef = new Firebase('https://educontactlist.firebaseio.com/contacts');
   firebaseRef.push({contact});
 }
+export function removeContact(contactId) {
+  let firebaseRef = new Firebase('https://educontactlist.firebaseio.com/contacts/' + contactId);
+  firebaseRef.remove();
+}
 export function getContacts() {
   let firebaseRef = new Firebase('https://educontactlist.firebaseio.com/contacts');
   firebaseRef.once("value", (snapshot) => {
