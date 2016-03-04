@@ -1,11 +1,12 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
 import {EventEmitter} from 'events';
-import {saveContact, removeContact} from '../utils/appAPI';
+import {saveContact, removeContact, updateContact} from '../utils/appAPI';
 
 const CHANGE_EVENT = 'change';
 
 let _contacts = [];
+let _contactToEdit = '';
 
 class AppStoreClass extends EventEmitter {
   saveContact(contact) {
@@ -23,6 +24,19 @@ class AppStoreClass extends EventEmitter {
   removeContact(contactId) {
     let index = _contacts.findIndex(x => x.id === contactId);
     _contacts.splice(index, 1);
+  }
+
+  setContactToEdit(contact) {
+    _contactToEdit = contact;
+  }
+
+  getContactToEdit() {
+    return _contactToEdit;
+  }
+
+  updateContact(contact) {
+    _contacts = _contacts.filter(x => x.id !== contact.id);
+    _contacts.push(contact);
   }
 
   emitChange() {
@@ -45,7 +59,6 @@ AppDispatcher.register((payload) => {
 
   switch (action.actionType) {
     case AppConstants.SAVE_CONTACT:
-      console.log('Saving contact...');
       // Store Save
       AppStore.saveContact(action.contact);
       // Save to API
@@ -53,17 +66,31 @@ AppDispatcher.register((payload) => {
       // Emit change
       AppStore.emit(CHANGE_EVENT);
       break;
+
     case AppConstants.RECEIVE_CONTACTS:
-      console.log('Receiving contacts...');
       AppStore.setContacts(action.contacts);
       // Emit change
       AppStore.emit(CHANGE_EVENT);
       break;
+
     case AppConstants.REMOVE_CONTACT:
-      console.log('Removing contact...');
       AppStore.removeContact(action.contactId);
       // API remove
       removeContact(action.contactId);
+      // Emit change
+      AppStore.emit(CHANGE_EVENT);
+      break;
+
+    case AppConstants.EDIT_CONTACT:
+      AppStore.setContactToEdit(action.contact);
+      // Emit change
+      AppStore.emit(CHANGE_EVENT);
+      break;
+
+    case AppConstants.UPDATE_CONTACT:
+      AppStore.updateContact(action.contact);
+      // API Update
+      updateContact(action.contact);
       // Emit change
       AppStore.emit(CHANGE_EVENT);
       break;

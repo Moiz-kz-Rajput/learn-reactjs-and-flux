@@ -1,11 +1,13 @@
 import React from 'react';
 import AppStore from '../stores/AppStore';
 import AddForm from './AddForm.jsx';
+import EditForm from './EditForm.jsx';
 import ContactList from './ContactList.jsx';
 
 function getAppState() {
   return {
-    contacts: AppStore.getContacts()
+    contacts: AppStore.getContacts(),
+    contactToEdit: AppStore.getContactToEdit()
   };
 }
 
@@ -24,9 +26,13 @@ class App extends React.Component {
   }
 
   render() {
+    let form = <AddForm />;
+    if (this.state.contactToEdit !== '') {
+      form = <EditForm contactToEdit={this.state.contactToEdit} />;
+    }
     return (
       <div>
-        <AddForm />
+        {form}
         <ContactList contacts={this.state.contacts} />
       </div>
     )

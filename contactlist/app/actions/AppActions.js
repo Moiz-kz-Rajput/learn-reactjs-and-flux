@@ -22,6 +22,20 @@ class AppActions {
       contactId: contactId
     });
   }
+
+  static editContact(contact) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.EDIT_CONTACT,
+      contact: contact
+    });
+  }
+
+  static updateContact(contact) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.UPDATE_CONTACT,
+      contact: contact
+    });
+  }
 }
 
 export default AppActions;

@@ -28,7 +28,7 @@ class AddForm extends React.Component {
     const contact = {
       name: this.refs.name.value.trim(),
       phone: this.refs.phone.value.trim(),
-      email: this.refs.email.value.trim(),
+      email: this.refs.email.value.trim()
     };
 
     AppActions.saveContact(contact);
