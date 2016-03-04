@@ -8,6 +8,13 @@ class AppActions {
       contact: contact
     });
   }
+
+  static receiveContacts(contacts) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.RECEIVE_CONTACTS,
+      contacts: contacts
+    });
+  }
 }
 
 export default AppActions;
