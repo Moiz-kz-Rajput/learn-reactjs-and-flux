@@ -1,0 +1,24 @@
+{
+  "name": "stickypad",
+  "description": "Sticky Pad app",
+  "main": "index.js",
+  "authors": [
+    "Eduard Luhtonen <luhtonen@gmail.com> (http://luhtonen.github.io/)"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/luhtonen/learn-reactjs-and-flux",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1"
+  },
+  "devDependencies": {
+    "foundation-sites": "^6.2.0"
+  }
+}
