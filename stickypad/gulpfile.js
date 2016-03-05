@@ -37,6 +37,7 @@ gulp.task('styles', function () {
         'bower_components/foundation-sites/scss'
       ]
     }))
+    .on('error', handleError)
     .pipe(concat('main.css'))
     .pipe(gulp.dest('./dist/css'));
 

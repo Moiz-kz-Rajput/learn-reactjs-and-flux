@@ -20,6 +20,10 @@ class AppStoreClass extends EventEmitter {
     _notes = notes;
   }
 
+  removeNote(noteId) {
+    _notes = _notes.filter(x => x._id.$oid !== noteId);
+  }
+
   emitChange() {
     this.emit(CHANGE_EVENT);
   }
@@ -40,8 +44,6 @@ AppDispatcher.register((payload) => {
 
   switch (action.actionType) {
     case AppConstants.ADD_NOTE:
-      // Store save
-      AppStore.addNote(action.note);
       // API save
       AppAPI.addNote(action.note);
       // Emit change
@@ -51,6 +53,15 @@ AppDispatcher.register((payload) => {
     case AppConstants.RECEIVE_NOTES:
       // Store set
       AppStore.setNotes(action.notes);
+      // Emit change
+      AppStore.emit(CHANGE_EVENT);
+      break;
+
+    case AppConstants.REMOVE_NOTE:
+      // Store remove
+      AppStore.removeNote(action.noteId);
+      // API remove
+      AppAPI.removeNote(action.noteId);
       // Emit change
       AppStore.emit(CHANGE_EVENT);
       break;

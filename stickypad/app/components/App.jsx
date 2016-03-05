@@ -24,7 +24,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.notes);
     return (
       <div className="off-canvas-wrapper">
         <div className="off-canvas-wrapper-inner" data-off-canvas-wrapper>

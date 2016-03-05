@@ -8,6 +8,12 @@ class AppActions {
       note: note
     });
   }
+  static removeNote(noteId) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.REMOVE_NOTE,
+      noteId: noteId
+    });
+  }
   static receiveNotes(notes) {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.RECEIVE_NOTES,
