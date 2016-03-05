@@ -8,6 +8,12 @@ class AppActions {
       note: note
     });
   }
+  static receiveNotes(notes) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.RECEIVE_NOTES,
+      notes: notes
+    });
+  }
 }
 
 export default AppActions;

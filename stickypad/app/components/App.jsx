@@ -1,6 +1,7 @@
 import React from 'react';
 import AppStore from '../stores/AppStore';
 import AddNoteForm from './AddNoteForm.jsx';
+import NoteList from './NoteList.jsx';
 
 function getAppState() {
   return {
@@ -34,7 +35,7 @@ class App extends React.Component {
             </div>
           </div>
           <div className="off-canvas-content" data-off-canvas-content>
-            // NOTELIST
+            <NoteList notes={this.state.notes} />
           </div>
         </div>
       </div>

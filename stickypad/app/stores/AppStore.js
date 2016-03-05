@@ -1,6 +1,7 @@
 import {EventEmitter} from 'events';
 import AppDispatcher from '../dispatchers/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
+import * as AppAPI from '../utils/appAPI';
 
 const CHANGE_EVENT = 'change';
 
@@ -13,6 +14,10 @@ class AppStoreClass extends EventEmitter {
 
   getNotes() {
     return _notes;
+  }
+
+  setNotes(notes) {
+    _notes = notes;
   }
 
   emitChange() {
@@ -35,10 +40,17 @@ AppDispatcher.register((payload) => {
 
   switch (action.actionType) {
     case AppConstants.ADD_NOTE:
-      console.log('adding note');
       // Store save
       AppStore.addNote(action.note);
       // API save
+      AppAPI.addNote(action.note);
+      // Emit change
+      AppStore.emit(CHANGE_EVENT);
+      break;
+
+    case AppConstants.RECEIVE_NOTES:
+      // Store set
+      AppStore.setNotes(action.notes);
       // Emit change
       AppStore.emit(CHANGE_EVENT);
       break;
