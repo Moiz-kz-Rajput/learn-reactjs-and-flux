@@ -1,5 +1,5 @@
 # GitHub Profile Viewer
-An app that will let the user search for specific GitHub accounts and display all of the infromation.
+An application that will let the user search for specific GitHub accounts and display all of the infromation.
 
 This project is showing how to setup React project with `package.json` and `webpack`, as well as general structure of React.js application and how to split UI into multiple React Components.
 

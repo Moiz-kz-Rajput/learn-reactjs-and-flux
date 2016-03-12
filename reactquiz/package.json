@@ -4,8 +4,9 @@
   "description": "Simple quiz app in React",
   "main": "index.js",
   "scripts": {
-    "production": "webpack -p  --progress --colors",
-    "start": "webpack-dev-server  --progress --colors"
+    "build": "node node_modules/.bin/webpack",
+    "production": "node node_modules/.bin/webpack -p  --progress --colors",
+    "start": "node node_modules/.bin/webpack-dev-server  --progress --colors"
   },
   "keywords": [],
   "author": "Eduard Luhtonen <luhtonen@gmail.com> (http://luhtonen.github.io/)",
@@ -20,7 +21,8 @@
     "html-webpack-plugin": "^2.9.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "babel-core": "^6.6.0",
