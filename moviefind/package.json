@@ -4,6 +4,7 @@
   "description": "Simple movie info finder",
   "main": "index.js",
   "scripts": {
+    "build": "node node_modules/.bin/gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
