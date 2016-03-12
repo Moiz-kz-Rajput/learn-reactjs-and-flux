@@ -3,10 +3,16 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+}
+
 gulp.task('browserify', function () {
   browserify('./app/main.js')
     .transform("babelify", {presets: ["es2015", "stage-0", "react"]})
     .bundle()
+    .on('error', handleError)
     .pipe(source('main.js'))
     .pipe(gulp.dest('dist/js'));
 });
