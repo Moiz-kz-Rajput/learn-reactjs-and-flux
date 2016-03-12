@@ -3,7 +3,7 @@ React.js and Flux learning projects from video course "ReactJS and Flux Learn By
 
 List of projects:
 
-1. Bootstrap React Components
+1. [Bootstrap React Components](bootstrapreact)
 2. GitHub Profile Viewer
 3. Quick Quiz Application
 4. Movie Find
