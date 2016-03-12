@@ -1,5 +1,5 @@
 # learn-reactjs-and-flux
-Projects from video course ReactJS and Flux Learn By Building 10 Projects
+React.js and Flux learning projects from video course "ReactJS and Flux Learn By Building 10 Projects"
 
 List of projects:
 
