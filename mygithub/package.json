@@ -4,6 +4,7 @@
   "description": "Get and display user GitHub info",
   "main": "index.js",
   "scripts": {
+    "build": "node_modules/.bin/webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Eduard Luhtonen <luhtonen@gmail.com> (http://luhtonen.github.io/)",
