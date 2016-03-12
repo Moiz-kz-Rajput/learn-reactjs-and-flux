@@ -4,7 +4,9 @@
   "description": "Simple contact list app",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node_modules/bower/bin/bower install && gulp build-all"
+    "postinstall": "node node_modules/.bin/bower install && node node_modules/.bin/gulp build-all",
+    "build": "node node_modules/.bin/gulp build-all",
+    "start": "node node_modules/.bin/gulp"
   },
   "keywords": [],
   "author": "Eduard Luhtonen <luhtonen@gmail.com> (http://luhtonen.github.io/)",
