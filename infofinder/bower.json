@@ -1,0 +1,22 @@
+{
+  "name": "infofinder",
+  "description": "InfoFinder is an application that is powered by DuckDuckGo API search engine. It simply returns results using a GET request.",
+  "main": "index.js",
+  "authors": [
+    "Eduard Luhtonen <luhtonen@gmail.com> (http://luhtonen.github.io/)"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/luhtonen/learn-reactjs-and-flux",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6"
+  }
+}

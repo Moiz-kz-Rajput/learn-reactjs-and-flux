@@ -9,4 +9,4 @@ List of projects:
 4. [Movie Find](moviefind) and [Movie Find improved](moviefind-improved)
 5. [Firebase Contact List](contactlist)
 6. [Stickypad Notes](stickypad)
-7. InfoFinder Search Engine
+7. [InfoFinder Search Engine](infofinder)
