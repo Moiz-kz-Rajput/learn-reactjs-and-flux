@@ -13,8 +13,16 @@ class AppStoreClass extends EventEmitter {
     _searchText = search.text;
   }
 
+  getSearchText() {
+    return _searchText;
+  }
+
   setResults(results) {
     _results = results;
+  }
+
+  getResults() {
+    return _results;
   }
 
   emitChange() {

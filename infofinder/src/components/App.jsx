@@ -3,10 +3,17 @@ import AppStore from '../stores/AppStore';
 import SearchForm from './SearchForm.jsx';
 import SearchResults from './SearchResults.jsx';
 
+function getAppState() {
+  return {
+    results: AppStore.getResults(),
+    searchText: AppStore.getSearchText()
+  };
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
-//    this.state = getAppState();
+    this.state = getAppState();
   }
 
   componentDidMount() {
@@ -21,13 +28,13 @@ class App extends React.Component {
     return (
       <div>
         <SearchForm />
-        <SearchResults />
+        <SearchResults searchText={this.state.searchText} results={this.state.results} />
       </div>
     )
   }
 
   _onChange = () => {
-//    this.setState(getAppState());
+    this.setState(getAppState());
   };
 }
 
