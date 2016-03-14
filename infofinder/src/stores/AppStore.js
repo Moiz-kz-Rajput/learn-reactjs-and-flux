@@ -5,11 +5,16 @@ import AppAPI from '../utils/appAPI';
 
 const CHANGE_EVENT = 'change';
 
+let _results = [];
 let _searchText = '';
 
 class AppStoreClass extends EventEmitter {
   setSearchText(search) {
     _searchText = search.text;
+  }
+
+  setResults(results) {
+    _results = results;
   }
 
   emitChange() {
@@ -34,6 +39,11 @@ AppDispatcher.register((payload) => {
     case AppConstants.SEARCH_TEXT:
       AppAPI.searchText(action.search);
       AppStore.setSearchText(action.search);
+      AppStore.emitChange(CHANGE_EVENT);
+      break;
+
+    case AppConstants.RECEIVE_RESULTS:
+      AppStore.setResults(action.results);
       AppStore.emitChange(CHANGE_EVENT);
       break;
   }

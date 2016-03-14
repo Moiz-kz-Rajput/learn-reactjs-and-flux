@@ -8,6 +8,13 @@ class AppActions {
       search: search
     });
   }
+
+  static receiveResults(results) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.RECEIVE_RESULTS,
+      results: results
+    });
+  }
 }
 
 export default AppActions;
