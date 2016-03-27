@@ -20,7 +20,8 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'react-hot!babel',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        include: __dirname + '/app'
       },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
