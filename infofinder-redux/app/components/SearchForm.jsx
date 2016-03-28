@@ -7,8 +7,10 @@ let SearchForm = ({dispatch}) => {
 
   return (
     <div>
-      <form onSubmit={() => {
+      <form onSubmit={(e) => {
+          e.preventDefault();
           dispatch(searchText(input.value));
+          input.value = '';
         }} className="well">
         <div className="form-group has-feedback">
           <label>Search for something...</label>
