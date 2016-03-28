@@ -15,7 +15,7 @@ let SearchForm = ({dispatch}) => {
         <div className="form-group has-feedback">
           <label>Search for something...</label>
           <input type="text" className="form-control" ref={node => {input = node;}}/>
-          <span className="glyphicon glyphicon-search form-control-feedback"></span>
+          <span className="glyphicon glyphicon-search form-control-feedback" />
         </div>
       </form>
     </div>
