@@ -10,9 +10,10 @@ let SearchForm = ({dispatch}) => {
       <form onSubmit={() => {
           dispatch(searchText(input.value));
         }} className="well">
-        <div className="form-group">
+        <div className="form-group has-feedback">
           <label>Search for something...</label>
           <input type="text" className="form-control" ref={node => {input = node;}}/>
+          <span className="glyphicon glyphicon-search form-control-feedback"></span>
         </div>
       </form>
     </div>
